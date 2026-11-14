@@ -1,0 +1,7 @@
+Salesperson: Hello! Thank you for showing interest in our software. Could you tell me what challenges your business currently faces?
+Customer: We are struggling with managing our inventory and tracking our sales.
+Salesperson: I understand. We can address these problems using our inventory management software.
+Customer: How much does it cost?
+Salesperson: Fair point. Let me explain our pricing plans. We can schedule a call next week to discuss this further. Shall we proceed?
+Customer: Yes, that sounds good.
+END

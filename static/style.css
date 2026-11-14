@@ -1,0 +1,1238 @@
+
+/* ==========================================
+   AI SALES COACH - COMPLETE STYLESHEET
+========================================== */
+
+/* GLOBAL */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, #dbeafe 0, transparent 30%),
+        radial-gradient(circle at 90% 80%, #e0e7ff 0, transparent 30%),
+        #f8fafc;
+    color: #172554;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(110deg, #0f172a, #1e3a8a);
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 25px rgba(15, 23, 42, 0.2);
+}
+
+.navbar h1 {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    margin: 0;
+}
+
+.navbar nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.navbar nav a {
+    color: #dbeafe;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.navbar nav a:hover {
+    color: #67e8f9;
+}
+
+
+/* ==========================================
+   MAIN LAYOUT
+========================================== */
+
+main {
+    width: 88%;
+    max-width: 1180px;
+    margin: 45px auto;
+}
+
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 40px;
+    padding: 55px 45px;
+    min-height: 410px;
+    background: linear-gradient(
+        120deg,
+        #0f172a,
+        #172554,
+        #1e40af
+    );
+    border-radius: 25px;
+    color: white;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(30, 64, 175, 0.2);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: #3b82f6;
+    filter: blur(120px);
+    opacity: 0.25;
+    right: 5%;
+    top: 5%;
+}
+
+.hero-content,
+.hero-visual {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 13px;
+    border: 1px solid rgba(147, 197, 253, 0.4);
+    border-radius: 30px;
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    color: white;
+    font-size: clamp(32px, 4vw, 47px);
+    line-height: 1.15;
+    margin: 0 0 20px;
+    max-width: 600px;
+}
+
+.hero h2 span {
+    color: #60a5fa;
+}
+
+.hero-content > p {
+    color: #cbd5e1;
+    font-size: 16px;
+    max-width: 550px;
+    margin-bottom: 28px;
+}
+
+.hero-button {
+    display: inline-block;
+    background: linear-gradient(120deg, #2563eb, #6366f1);
+    color: white;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3);
+    transition: 0.25s ease;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.15);
+}
+
+.hero-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+    color: #bfdbfe;
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   HERO VISUAL
+========================================== */
+
+.visual-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px;
+    padding: 25px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.visual-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #bfdbfe;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    background: #34d399;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #34d399;
+}
+
+.waveform {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 15px;
+}
+
+.waveform span {
+    width: 5px;
+    height: 25px;
+    background: linear-gradient(#67e8f9, #3b82f6);
+    border-radius: 10px;
+    animation: wave 1.2s ease-in-out infinite alternate;
+}
+
+.waveform span:nth-child(3n) {
+    height: 55px;
+    animation-delay: 0.2s;
+}
+
+.waveform span:nth-child(3n + 1) {
+    height: 38px;
+    animation-delay: 0.4s;
+}
+
+.waveform span:nth-child(4n) {
+    height: 70px;
+    animation-delay: 0.1s;
+}
+
+@keyframes wave {
+    from {
+        transform: scaleY(0.55);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.visual-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.visual-line:last-child {
+    border-bottom: none;
+}
+
+.visual-line small {
+    display: block;
+    color: #93c5fd;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.visual-line strong {
+    color: white;
+    font-size: 13px;
+}
+
+.visual-icon {
+    color: #67e8f9;
+    font-size: 22px;
+}
+
+
+/* ==========================================
+   COMMON SECTION HEADINGS
+========================================== */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    color: #172554;
+    font-size: 29px;
+    margin: 8px 0;
+}
+
+.section-heading p {
+    color: #64748b;
+    font-size: 15px;
+    margin: 0;
+}
+
+.section-label {
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+
+/* ==========================================
+   FEATURE SECTION
+========================================== */
+
+.features-section,
+.analysis-section,
+.workflow-section {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 45px 0;
+    margin-bottom: 0;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    background: white;
+    padding: 27px;
+    border: 1px solid #e2e8f0;
+    border-radius: 17px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+    transition: 0.25s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.1);
+    border-color: #bfdbfe;
+}
+
+.feature-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 25px;
+    margin-bottom: 18px;
+}
+
+.feature-card h3 {
+    color: #172554;
+    font-size: 17px;
+    margin: 0 0 10px;
+}
+
+.feature-card p {
+    color: #64748b;
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/* ==========================================
+   ANALYSIS SECTION
+========================================== */
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.analysis-card {
+    background: white;
+    padding: 30px;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    transition: 0.25s ease;
+}
+
+.analysis-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
+}
+
+.analysis-card-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 13px;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.card-label {
+    color: #3b82f6;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.analysis-card h3 {
+    color: #172554;
+    font-size: 21px;
+    margin: 8px 0;
+}
+
+.analysis-card > p {
+    color: #64748b;
+    font-size: 14px;
+    min-height: 45px;
+    margin-bottom: 22px;
+}
+
+
+/* ==========================================
+   TEXT INPUT
+========================================== */
+
+textarea,
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    background: #f8fafc;
+    color: #172554;
+    transition: 0.25s ease;
+}
+
+.analysis-card textarea {
+    min-height: 185px;
+    resize: vertical;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+
+/* ==========================================
+   FILE UPLOAD
+========================================== */
+
+.upload-area {
+    background: #f8fbff;
+    border: 2px dashed #93c5fd;
+    border-radius: 15px;
+    padding: 24px 18px;
+    text-align: center;
+    min-height: 185px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-icon {
+    width: 48px;
+    height: 48px;
+    background: #dbeafe;
+    color: #2563eb;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.upload-area h4 {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.upload-area p {
+    color: #64748b;
+    font-size: 13px;
+    margin: 3px 0 12px;
+}
+
+.upload-area input[type="file"] {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    font-size: 12px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.upload-area small {
+    color: #94a3b8;
+    margin-top: 10px;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+button,
+input[type="submit"] {
+    padding: 13px 25px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(120deg, #2563eb, #4f46e5);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+    transition: all 0.25s ease;
+}
+
+.analysis-card button {
+    width: 100%;
+    margin: 12px 0 0;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.3);
+    filter: brightness(1.08);
+}
+
+button:active,
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.analysis-card .secondary-button {
+    background: #eff6ff;
+    color: #2563eb;
+    box-shadow: none;
+}
+
+.analysis-card .secondary-button:hover {
+    background: #dbeafe;
+}
+
+
+/* ==========================================
+   WORKFLOW SECTION
+========================================== */
+
+.workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.workflow-step {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 25px;
+    transition: 0.25s ease;
+}
+
+.workflow-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.08);
+}
+
+.step-number {
+    color: #3b82f6;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.workflow-step h3 {
+    color: #172554;
+    margin: 10px 0 5px;
+}
+
+.workflow-step p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   ERROR MESSAGE
+========================================== */
+
+.error-card {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    color: #b91c1c;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.error-card p {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.site-footer {
+    background: linear-gradient(110deg, #0f172a, #172554);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 40px;
+}
+
+.site-footer h3 {
+    margin: 0 0 8px;
+}
+
+.site-footer p {
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+.site-footer small {
+    color: #93c5fd;
+}
+
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 850px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 30px;
+    }
+
+    .hero-visual {
+        max-width: 500px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .feature-grid,
+    .workflow-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .navbar nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .navbar nav a {
+        font-size: 13px;
+    }
+
+    main {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .hero {
+        padding: 30px 22px;
+        border-radius: 18px;
+    }
+
+    .hero h2 {
+        font-size: 34px;
+    }
+
+    .hero-points {
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    .analysis-card {
+        padding: 22px;
+    }
+
+    .features-section,
+    .analysis-section,
+    .workflow-section {
+        padding: 30px 0;
+    }
+}
+
+/* ==========================================
+   RESULTS PAGE
+========================================== */
+
+.results-main {
+    max-width: 1180px;
+    width: 88%;
+    margin: 45px auto;
+}
+
+.results-hero {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+}
+
+.results-hero h2 {
+    font-size: 30px;
+    color: #172554;
+    margin: 10px 0;
+}
+
+.results-hero p {
+    color: #64748b;
+    margin: 0;
+}
+
+
+/* OVERALL SCORE */
+
+.score-section {
+    padding: 0;
+    margin-bottom: 30px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.score-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 38px;
+    border-radius: 20px;
+    background: linear-gradient(120deg, #0f172a, #1e3a8a, #4338ca);
+    color: white;
+    box-shadow: 0 15px 35px rgba(30, 64, 175, 0.18);
+}
+
+.score-information {
+    flex: 1;
+}
+
+.score-information h2 {
+    font-size: 58px;
+    line-height: 1.1;
+    margin: 12px 0;
+    color: white;
+}
+
+.score-information p {
+    color: #dbeafe;
+    margin: 0 0 20px;
+}
+
+.score-information small {
+    display: block;
+    color: #bfdbfe;
+    margin-top: 12px;
+    font-size: 12px;
+}
+
+.score-track,
+.progress-track {
+    height: 9px;
+    background: #dbeafe;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.score-track {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.score-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #67e8f9, #60a5fa);
+    border-radius: 20px;
+    transition: width 0.6s ease;
+}
+
+.score-decoration {
+    width: 135px;
+    height: 135px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #bfdbfe;
+}
+
+.score-decoration span {
+    font-size: 38px;
+}
+
+.score-decoration small {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+
+/* COMMON RESULTS SECTIONS */
+
+.results-section {
+    padding: 35px 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.results-section .section-heading {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+
+/* STATISTICS */
+
+.statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+}
+
+.stat-icon {
+    display: grid;
+    place-items: center;
+    width: 43px;
+    height: 43px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 12px;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.stat-card > span {
+    display: block;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.stat-card h3 {
+    color: #172554;
+    font-size: 32px;
+    margin: 5px 0;
+}
+
+.stat-card small {
+    color: #3b82f6;
+    font-size: 12px;
+}
+
+
+/* CATEGORY SCORES */
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    background: white;
+    padding: 25px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+}
+
+.category-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+.category-top h3 {
+    color: #172554;
+    font-size: 17px;
+    margin: 0;
+}
+
+.category-score {
+    color: #2563eb;
+    background: #eff6ff;
+    border-radius: 8px;
+    padding: 6px 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.progress-track {
+    background: #e2e8f0;
+    margin-bottom: 22px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #6366f1);
+    border-radius: 20px;
+}
+
+.category-card h4 {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 12px;
+}
+
+.keyword-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.keyword {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #dbeafe;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.empty-message {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+
+/* CUSTOMER OBJECTIONS */
+
+.objection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.objection-card {
+    background: white;
+    padding: 23px;
+    border: 1px solid #fecaca;
+    border-left: 4px solid #ef4444;
+    border-radius: 13px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+}
+
+.objection-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.objection-heading h3 {
+    color: #172554;
+    font-size: 17px;
+    margin: 0;
+}
+
+.objection-icon {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    background: #fee2e2;
+    color: #dc2626;
+    border-radius: 50%;
+    font-weight: 800;
+}
+
+.objection-keyword {
+    display: inline-block;
+    color: #b91c1c;
+    background: #fef2f2;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.objection-message {
+    color: #475569;
+    font-size: 14px;
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
+.empty-card {
+    background: white;
+    border: 1px solid #bbf7d0;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+}
+
+.empty-card > span {
+    color: #16a34a;
+    font-size: 35px;
+}
+
+.empty-card h3 {
+    color: #166534;
+}
+
+.empty-card p {
+    color: #64748b;
+}
+
+
+/* COACHING REPORT */
+
+.coaching-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.coaching-card {
+    background: white;
+    padding: 25px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+}
+
+.recommendations-card {
+    grid-column: 1 / -1;
+}
+
+.coaching-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.coaching-heading h3 {
+    color: #172554;
+    font-size: 18px;
+    margin: 0;
+}
+
+.coaching-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.strengths-card .coaching-icon {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.weaknesses-card .coaching-icon {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.recommendations-card .coaching-icon {
+    background: #e0e7ff;
+    color: #4338ca;
+}
+
+.coaching-card ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.coaching-card li {
+    color: #475569;
+    font-size: 14px;
+    padding: 7px 0;
+    line-height: 1.6;
+}
+
+.strengths-card li::marker {
+    color: #16a34a;
+}
+
+.weaknesses-card li::marker {
+    color: #d97706;
+}
+
+.recommendations-card li::marker {
+    color: #4f46e5;
+}
+
+
+/* REPORT NOTE */
+
+.report-note {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 18px;
+    color: #1e40af;
+    font-size: 13px;
+    margin: 15px 0 30px;
+}
+
+
+/* RESULTS BUTTON */
+
+.results-actions {
+    text-align: center;
+    padding: 15px 0 35px;
+}
+
+.results-actions .hero-button {
+    display: inline-block;
+}
+
+
+/* RESPONSIVE RESULTS */
+
+@media (max-width: 800px) {
+
+    .statistics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-grid,
+    .objection-grid,
+    .coaching-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recommendations-card {
+        grid-column: auto;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .results-main {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .results-hero {
+        padding: 25px;
+    }
+
+    .results-hero h2 {
+        font-size: 24px;
+    }
+
+    .score-card {
+        padding: 25px;
+    }
+
+    .score-information h2 {
+        font-size: 45px;
+    }
+
+    .score-decoration {
+        width: 85px;
+        height: 85px;
+    }
+
+    .score-decoration span {
+        font-size: 25px;
+    }
+
+    .score-decoration small {
+        font-size: 8px;
+    }
+
+    .results-section {
+        padding: 25px 0;
+    }
+}

@@ -1,0 +1,11 @@
+Speaker 1: Good morning, sir. I am Alex from SmartDesk. How can I help you?
+Speaker 2: Hi, we are looking for software to manage our employees and track daily tasks.
+Speaker 1: Certainly, our platform helps teams organize tasks and improve productivity.
+Speaker 2: Sounds useful, but it's too expensive for our budget.
+Speaker 1: I can understand your concern. We can discuss a plan that suits your budget.
+Speaker 2: I'm not sure whether it works for our company.
+Speaker 1: That's fair. We can arrange a free demonstration.
+Speaker 2: I'm busy this week. Maybe next week?
+Speaker 1: No problem. Shall we schedule a call for next Tuesday?
+Speaker 2: Yes, that works.
+Speaker 1: Perfect. I will send you the meeting details. Thank you for your time.

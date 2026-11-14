@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Sales Coach | Conversation Intelligence</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <h1>✦ AI Sales Coach</h1>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="#features">Features</a>
+            <a href="#analysis">Analyse</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-badge">
+                    ✦ AI-POWERED CONVERSATION INTELLIGENCE
+                </span>
+
+                <h2>
+                    Turn Every Sales Conversation Into
+                    <span>Better Performance.</span>
+                </h2>
+
+                <p>
+                    Analyse sales conversations, identify customer objections
+                    and discover opportunities to improve sales performance
+                    with AI-powered insights.
+                </p>
+
+                <a href="#analysis" class="hero-button">
+                    Start Analysing →
+                </a>
+
+                <div class="hero-points">
+                    <span>✓ Conversation Analysis</span>
+                    <span>✓ Objection Detection</span>
+                    <span>✓ AI Coaching</span>
+                </div>
+
+            </div>
+
+
+            <!-- DECORATIVE DASHBOARD -->
+            <div class="hero-visual">
+
+                <div class="visual-card">
+
+                    <div class="visual-top">
+                        <span class="status-dot"></span>
+                        <span>CONVERSATION INTELLIGENCE</span>
+                    </div>
+
+                    <div class="waveform">
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                    </div>
+
+                    <div class="visual-line">
+                        <div>
+                            <small>ANALYSIS</small>
+                            <strong>Conversation Insights</strong>
+                        </div>
+                        <span class="visual-icon">✦</span>
+                    </div>
+
+                    <div class="visual-line">
+                        <div>
+                            <small>DETECTION</small>
+                            <strong>Customer Objections</strong>
+                        </div>
+                        <span class="visual-icon">◎</span>
+                    </div>
+
+                    <div class="visual-line">
+                        <div>
+                            <small>RECOMMENDATIONS</small>
+                            <strong>Sales Coaching</strong>
+                        </div>
+                        <span class="visual-icon">↗</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES SECTION -->
+        <section id="features" class="features-section">
+
+            <div class="section-heading">
+                <span class="section-label">WHAT WE OFFER</span>
+
+                <h2>Smarter Sales Conversations</h2>
+
+                <p>
+                    Transform recorded conversations into meaningful
+                    performance insights.
+                </p>
+            </div>
+
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">◉</div>
+
+                    <h3>Conversation Analysis</h3>
+
+                    <p>
+                        Examine sales conversations and identify important
+                        communication indicators.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="feature-icon">◎</div>
+
+                    <h3>Objection Detection</h3>
+
+                    <p>
+                        Identify customer concerns related to price,
+                        timing, trust and other factors.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="feature-icon">✦</div>
+
+                    <h3>AI Sales Coaching</h3>
+
+                    <p>
+                        Generate actionable suggestions to help salespeople
+                        improve their conversations.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ERROR MESSAGE -->
+        {% if error %}
+        <section class="error-card">
+            <strong>⚠ Analysis Error</strong>
+            <p>{{ error }}</p>
+        </section>
+        {% endif %}
+
+
+        <!-- ANALYSIS SECTION -->
+        <section id="analysis" class="analysis-section">
+
+            <div class="section-heading">
+                <span class="section-label">GET STARTED</span>
+
+                <h2>Analyse Your Sales Conversation</h2>
+
+                <p>
+                    Choose your preferred method to begin analysing
+                    a sales conversation.
+                </p>
+            </div>
+
+
+            <div class="analysis-grid">
+
+                <!-- TEXT ANALYSIS -->
+                <div class="analysis-card">
+
+                    <div class="analysis-card-icon">✎</div>
+
+                    <span class="card-label">METHOD 01</span>
+
+                    <h3>Text-Based Analysis</h3>
+
+                    <p>
+                        Enter an existing conversation between a
+                        salesperson and a customer.
+                    </p>
+
+                    <form action="/analyze" method="POST">
+
+                        <textarea
+                            name="conversation"
+                            rows="9"
+                            placeholder="Salesperson: Hello! How can I help you today?
+Customer: I'm interested in your product, but the price seems high."
+                            required></textarea>
+
+                        <button type="submit">
+                            Analyse Conversation →
+                        </button>
+
+                        <button type="reset" class="secondary-button">
+                            Clear Text
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- AUDIO ANALYSIS -->
+                <div class="analysis-card">
+
+                    <div class="analysis-card-icon">♫</div>
+
+                    <span class="card-label">METHOD 02</span>
+
+                    <h3>Audio-Based Analysis</h3>
+
+                    <p>
+                        Upload a recorded sales call to automatically
+                        transcribe and analyse the conversation.
+                    </p>
+
+                    <form action="/analyze_audio"
+                          method="POST"
+                          enctype="multipart/form-data">
+
+                        <div class="upload-area">
+
+                            <div class="upload-icon">↑</div>
+
+                            <h4>Upload your recording</h4>
+
+                            <p>Choose an MP3 audio file</p>
+
+                            <input
+                                type="file"
+                                name="audio"
+                                accept=".mp3,audio/mpeg"
+                                required>
+
+                            <small>Supported format: MP3</small>
+
+                        </div>
+
+                        <button type="submit">
+                            Upload & Analyse Audio →
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+        <section id="about" class="workflow-section">
+
+            <div class="section-heading">
+                <span class="section-label">OUR WORKFLOW</span>
+
+                <h2>How It Works</h2>
+
+                <p>
+                    From raw conversations to actionable insights
+                    in three simple stages.
+                </p>
+            </div>
+
+
+            <div class="workflow-grid">
+
+                <div class="workflow-step">
+                    <span class="step-number">01</span>
+
+                    <h3>Input</h3>
+
+                    <p>
+                        Enter a conversation or upload a sales call recording.
+                    </p>
+                </div>
+
+
+                <div class="workflow-step">
+                    <span class="step-number">02</span>
+
+                    <h3>Analyse</h3>
+
+                    <p>
+                        Transcribe audio and examine conversation
+                        indicators and customer objections.
+                    </p>
+                </div>
+
+
+                <div class="workflow-step">
+                    <span class="step-number">03</span>
+
+                    <h3>Improve</h3>
+
+                    <p>
+                        Review performance scores and receive
+                        coaching recommendations.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <h3>✦ AI Sales Coach</h3>
+
+        <p>
+            Turning conversations into opportunities for improvement.
+        </p>
+
+        <small>AI Sales Coach | Version 1.0</small>
+
+    </footer>
+
+</body>
+</html>

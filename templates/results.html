@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analysis Results | AI Sales Coach</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <h1>✦ AI Sales Coach</h1>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/#features">Features</a>
+            <a href="/#about">About</a>
+        </nav>
+    </header>
+
+
+    <main class="results-main">
+
+        <!-- REPORT INTRODUCTION -->
+        <section class="results-hero">
+
+            <span class="section-label">CONVERSATION INTELLIGENCE REPORT</span>
+
+            <h2>Your Sales Performance Overview</h2>
+
+            <p>
+                Review conversation insights, identify customer objections
+                and discover opportunities to improve.
+            </p>
+
+        </section>
+
+
+        <!-- OVERALL PERFORMANCE -->
+        <section class="score-section">
+
+            <div class="score-card">
+
+                <div class="score-information">
+
+                    <span class="card-label">OVERALL PERFORMANCE</span>
+
+                    <h2>{{ percentage }}%</h2>
+
+                    <p>Overall Sales Performance Score</p>
+
+                    <div class="score-track">
+                        <div class="score-fill"
+                             style="width: {{ percentage }}%;">
+                        </div>
+                    </div>
+
+                    <small>Based on the conversation indicators detected.</small>
+
+                </div>
+
+                <div class="score-decoration">
+                    <span>✦</span>
+                    <small>SALES<br>INSIGHTS</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONVERSATION STATISTICS -->
+        <section class="results-section">
+
+            <div class="section-heading">
+                <span class="section-label">CONVERSATION OVERVIEW</span>
+                <h2>Conversation Statistics</h2>
+                <p>A breakdown of participation in this conversation.</p>
+            </div>
+
+
+            <div class="statistics-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon">▤</div>
+                    <span>Total Messages</span>
+                    <h3>{{ stats[0] }}</h3>
+                    <small>Messages analysed</small>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon">◉</div>
+                    <span>Salesperson Messages</span>
+                    <h3>{{ stats[1] }}</h3>
+                    <small>
+                        {{ "%.2f"|format(stats[3]) }}% participation
+                    </small>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon">◎</div>
+                    <span>Customer Messages</span>
+                    <h3>{{ stats[2] }}</h3>
+                    <small>
+                        {{ "%.2f"|format(stats[4]) }}% participation
+                    </small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PERFORMANCE BREAKDOWN -->
+        <section class="results-section">
+
+            <div class="section-heading">
+                <span class="section-label">PERFORMANCE INDICATORS</span>
+                <h2>Sales Performance Breakdown</h2>
+                <p>Category-wise evaluation of salesperson behaviour.</p>
+            </div>
+
+
+            <div class="category-grid">
+
+                {% for category, matched, score in results %}
+
+                <div class="category-card">
+
+                    <div class="category-top">
+
+                        <h3>{{ category }}</h3>
+
+                        <span class="category-score">
+                            {{ score }}/5
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-track">
+
+                        <div class="progress-fill"
+                             style="width: {{ (score / 5 * 100)|round(0) }}%;">
+                        </div>
+
+                    </div>
+
+
+                    <h4>Keywords Identified</h4>
+
+                    {% if matched %}
+
+                        <div class="keyword-list">
+
+                            {% for word in matched %}
+                                <span class="keyword">{{ word }}</span>
+                            {% endfor %}
+
+                        </div>
+
+                    {% else %}
+
+                        <p class="empty-message">
+                            No matching keywords detected.
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+        <!-- CUSTOMER OBJECTIONS -->
+        <section class="results-section">
+
+            <div class="section-heading">
+                <span class="section-label">CUSTOMER INSIGHTS</span>
+                <h2>Customer Objections</h2>
+                <p>Concerns identified during the conversation.</p>
+            </div>
+
+
+            {% if objections %}
+
+                <div class="objection-grid">
+
+                    {% for category, keyword, message in objections %}
+
+                    <div class="objection-card">
+
+                        <div class="objection-heading">
+                            <span class="objection-icon">!</span>
+                            <h3>{{ category }} Objection</h3>
+                        </div>
+
+                        <span class="objection-keyword">
+                            Detected keyword: {{ keyword }}
+                        </span>
+
+                        <p class="objection-message">
+                            "{{ message }}"
+                        </p>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="empty-card">
+                    <span>✓</span>
+                    <h3>No Customer Objections Detected</h3>
+                    <p>
+                        No matching objection indicators were found
+                        in this conversation.
+                    </p>
+                </div>
+
+            {% endif %}
+
+        </section>
+
+
+        <!-- AI COACHING REPORT -->
+        <section class="results-section coaching-section">
+
+            <div class="section-heading">
+                <span class="section-label">PERSONALISED FEEDBACK</span>
+                <h2>Sales Coaching Report</h2>
+                <p>Insights and suggestions based on the analysis.</p>
+            </div>
+
+
+            <div class="coaching-grid">
+
+                <!-- STRENGTHS -->
+                <div class="coaching-card strengths-card">
+
+                    <div class="coaching-heading">
+                        <span class="coaching-icon">✓</span>
+                        <h3>Strengths</h3>
+                    </div>
+
+                    <ul>
+                        {% for item in report.strengths %}
+                            <li>{{ item }}</li>
+                        {% else %}
+                            <li>No strengths identified yet.</li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+
+                <!-- WEAKNESSES -->
+                <div class="coaching-card weaknesses-card">
+
+                    <div class="coaching-heading">
+                        <span class="coaching-icon">↗</span>
+                        <h3>Areas for Improvement</h3>
+                    </div>
+
+                    <ul>
+                        {% for item in report.weaknesses %}
+                            <li>{{ item }}</li>
+                        {% else %}
+                            <li>No weaknesses identified yet.</li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+
+                <!-- RECOMMENDATIONS -->
+                <div class="coaching-card recommendations-card">
+
+                    <div class="coaching-heading">
+                        <span class="coaching-icon">✦</span>
+                        <h3>Recommendations</h3>
+                    </div>
+
+                    <ul>
+                        {% for item in report.recommendations %}
+                            <li>{{ item }}</li>
+                        {% else %}
+                            <li>No recommendations available.</li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- TRANSCRIBED CONVERSATION -->
+        <section class="results-section">
+
+            <div class="section-heading">
+                <span class="section-label">CALL TRANSCRIPT</span>
+                <h2>Transcribed Conversation</h2>
+                <p>Review the conversation captured from the recording.</p>
+            </div>
+
+            <div class="transcript-container">
+
+                {% for speaker, message in transcript %}
+
+                <div class="transcript-message
+                    {% if speaker == 'Salesperson' %}
+                        salesperson-message
+                    {% else %}
+                        customer-message
+                    {% endif %}">
+
+                    <div class="transcript-speaker">
+                        {% if speaker == 'Salesperson' %}
+                            <span>●</span> Salesperson
+                        {% else %}
+                            <span>●</span> Customer
+                        {% endif %}
+                    </div>
+
+                    <p>{{ message }}</p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+
+        <!-- DISCLAIMER -->
+        <div class="report-note">
+            <strong>Note:</strong>
+            These insights are based on the indicators detected
+            in the conversation and should be used as guidance
+            for improving sales communication.
+        </div>
+
+
+        <!-- BACK TO HOME -->
+        <div class="results-actions">
+
+            <a href="/" class="hero-button">
+                ← Analyse Another Conversation
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <h3>✦ AI Sales Coach</h3>
+
+        <p>
+            Turning conversations into opportunities for improvement.
+        </p>
+
+        <small>AI Sales Coach | Version 1.0</small>
+
+    </footer>
+
+</body>
+</html>
